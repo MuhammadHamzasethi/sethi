@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Mara Lindqvist Engineering</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;800&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: an engineering drawing. Concrete-grey sheet with a measured grid, a live 3D wireframe, stacked project sheets that pile up as you scroll, and audit gauges. */
+:root{
+  --sheet:#e7e6e1; --sheet-2:#dcdbd5; --ink:#121314; --mute:#5d5f61; --hi:#f1c232; --signal:#ff5b1f; --rule:rgba(18,19,20,.14);
+  --display:"Syne","Arial Black",sans-serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{background:var(--sheet);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;overflow-x:hidden;
+  background-image:linear-gradient(var(--rule) 1px,transparent 1px),linear-gradient(90deg,var(--rule) 1px,transparent 1px);background-size:48px 48px}
+.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.06em}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
+mark{background:var(--hi);color:var(--ink);padding:0 .12em}
+
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:14px;background:color-mix(in srgb,var(--sheet) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:31;background:var(--sheet)}
+.nav a{text-decoration:none}
+.nav nav{display:flex;gap:18px}
+.status{display:inline-flex;align-items:center;gap:8px}
+.status i{width:8px;height:8px;border-radius:50%;background:#2f9e5b;box-shadow:0 0 0 4px rgba(47,158,91,.18)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:24px;padding-block:72px 64px;align-items:center}
+.hero h1{margin:0;font-family:var(--display);font-weight:800;font-size:clamp(46px,7.4vw,118px);line-height:.92;letter-spacing:-.025em;text-wrap:balance}
+.hero h1 .o{display:inline-block;color:var(--sheet);-webkit-text-stroke:2px var(--ink)}
+.term{margin-top:28px;background:var(--ink);color:#e7e6e1;padding:16px 18px;max-width:560px;border-radius:2px}
+.term .p{color:var(--hi)}
+.term .cur{display:inline-block;width:.6em;height:1.1em;background:var(--hi);vertical-align:-.2em;animation:b 1s steps(1) infinite}
+@keyframes b{50%{opacity:0}}
+.model{position:relative;aspect-ratio:1;max-width:100%}
+.model canvas{width:100%;height:100%;display:block}
+.dim{position:absolute;color:var(--mute)}
+.dim.a{left:0;top:0}.dim.b{right:0;bottom:0;text-align:right}
+
+/* specs bar */
+.specs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-block:1px solid var(--ink)}
+.specs div{padding:18px 16px;border-right:1px solid var(--rule)}
+.specs div:last-child{border-right:0}
+.specs b{display:block;font-family:var(--display);font-size:clamp(28px,3.4vw,46px);line-height:1;font-variant-numeric:tabular-nums}
+
+/* stacked projects */
+.work{padding-block:110px 40px}
+.work h2,.audit h2,.contact h2{margin:0 0 36px;font-family:var(--display);font-weight:800;font-size:clamp(40px,6vw,92px);line-height:.95;letter-spacing:-.02em}
+.stack{display:grid;gap:28px}
+.sheet{position:sticky;top:calc(84px + env(safe-area-inset-top,0px));background:var(--sheet);border:1px solid var(--ink);display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);min-height:440px;transform-origin:50% 0}
+.sheet:nth-child(2){top:calc(104px + env(safe-area-inset-top,0px))}
+.sheet:nth-child(3){top:calc(124px + env(safe-area-inset-top,0px))}
+.sheet .info{padding:26px;display:flex;flex-direction:column;gap:14px;border-right:1px solid var(--ink)}
+.sheet h3{margin:0;font-family:var(--display);font-weight:800;font-size:clamp(30px,3.4vw,48px);line-height:1;letter-spacing:-.02em}
+.sheet p{margin:0;color:var(--mute);max-width:44ch}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
+.tags span{border:1px solid var(--ink);padding:3px 8px;border-radius:999px}
+.kpi{display:flex;gap:22px;flex-wrap:wrap}
+.kpi b{font-family:var(--display);font-size:30px;display:block;line-height:1}
+.sheet .viz{position:relative;overflow:hidden;background:var(--sheet-2)}
+.sheet .viz canvas{position:absolute;inset:0;width:100%;height:100%}
+.sheet .viz .mono{position:absolute;left:14px;top:12px}
+
+/* audit */
+.audit{padding-block:110px}
+.gauges{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.gauge{border:1px solid var(--ink);padding:18px;display:grid;justify-items:center;gap:10px;background:var(--sheet)}
+.gauge svg{width:120px;height:120px;max-width:100%}
+.gauge circle{fill:none;stroke-width:9}
+.gauge .bg{stroke:var(--sheet-2)}
+.gauge .fg{stroke:#2f9e5b;stroke-linecap:round;transform:rotate(-90deg);transform-origin:50% 50%}
+.gauge text{font-family:var(--display);font-weight:800;font-size:30px;fill:var(--ink)}
+.note{margin-top:18px;color:var(--mute);max-width:70ch}
+
+/* contact */
+.contact{background:var(--ink);color:var(--sheet);padding-block:110px 32px}
+.contact h2 mark{background:var(--hi)}
+.cta{display:flex;flex-wrap:wrap;align-items:center;gap:28px}
+.btn{display:inline-grid;place-items:center;width:180px;height:180px;border-radius:50%;background:var(--signal);color:var(--ink);font-family:var(--display);font-weight:800;font-size:20px;text-align:center;line-height:1.1;text-decoration:none;transition:transform .2s}
+.mail{font-family:var(--mono);font-size:clamp(18px,2.4vw,28px);user-select:all;border-bottom:1px solid var(--hi)}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:90px;color:#9a9b9c}
+
+@media (max-width:860px){
+  .status{display:none}
+  .hero{grid-template-columns:1fr}
+  .model{max-width:420px;margin-inline:auto;width:100%}
+  .specs{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .specs div:nth-child(2){border-right:0}
+  .sheet{grid-template-columns:1fr;position:relative;top:auto!important}
+  .sheet .info{border-right:0;border-bottom:1px solid var(--ink)}
+  .sheet .viz{min-height:240px}
+  .gauges{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (prefers-reduced-motion:reduce){.term .cur{animation:none}}
+</style>
+
+<header class="nav wrap mono">
+  <a href="#top"><b>M/L</b> Mara Lindqvist</a>
+  <span class="status"><i></i>Taking projects from Jan 2027</span>
+  <nav aria-label="Main"><a href="#work">Work</a><a href="#audit">Quality</a><a href="#contact">Contact</a></nav>
+</header>
+
+<main>
+<section class="hero wrap" id="top" aria-label="Intro">
+  <div>
+    <span class="mono">Frontend engineer · Stockholm · remote</span>
+    <h1>I build <mark>fast</mark> interfaces for <span class="o">complex</span> products.</h1>
+    <div class="term mono" aria-label="Terminal"><span class="p">mara@studio ~ %</span> <span id="typed">npm run ship -- --lighthouse=100</span><span class="cur"></span></div>
+  </div>
+  <div class="model">
+    <canvas id="wire" aria-label="Rotating 3D wireframe model"></canvas>
+    <span class="dim a mono">fig. 01 — icosphere, 642 verts</span>
+    <span class="dim b mono">drag to rotate</span>
+  </div>
+</section>
+
+<section class="specs wrap mono" aria-label="Key numbers">
+  <div>Years shipping<b>8</b></div>
+  <div>Products launched<b>23</b></div>
+  <div>Median LCP<b>0.9s</b></div>
+  <div>Bundle budget<b>&lt;90kb</b></div>
+</section>
+
+<section class="work wrap" id="work" aria-label="Selected projects">
+  <h2>Selected<br>projects</h2>
+  <div class="stack">
+    <article class="sheet"><div class="info"><span class="mono">SHEET 1/3 · Fintech · 2026</span><h3>Ledgerly dashboard</h3>
+      <p>Rebuilt a slow trading dashboard in React with virtualised tables and Web Workers. 40k rows stay smooth on a mid-range laptop.</p>
+      <div class="kpi mono"><div><b>-71%</b>load time</div><div><b>60fps</b>scrolling</div></div>
+      <div class="tags mono"><span>React</span><span>TypeScript</span><span>Web Workers</span></div></div>
+      <div class="viz"><canvas data-viz="bars"></canvas><span class="mono">p95 render time, ms</span></div></article>
+    <article class="sheet"><div class="info"><span class="mono">SHEET 2/3 · Climate · 2025</span><h3>Tidewatch maps</h3>
+      <p>A WebGL map showing sea-level forecasts for 3,000 coastal towns, readable on a phone in bright sun.</p>
+      <div class="kpi mono"><div><b>1.2M</b>visits</div><div><b>AA</b>contrast</div></div>
+      <div class="tags mono"><span>WebGL</span><span>Svelte</span><span>MapLibre</span></div></div>
+      <div class="viz"><canvas data-viz="contour"></canvas><span class="mono">elevation contours, 1:50k</span></div></article>
+    <article class="sheet"><div class="info"><span class="mono">SHEET 3/3 · Health · 2024</span><h3>Pulse booking</h3>
+      <p>A clinic booking flow cut from nine screens to three. Fewer drop-offs, fewer support calls.</p>
+      <div class="kpi mono"><div><b>+38%</b>bookings</div><div><b>3</b>screens</div></div>
+      <div class="tags mono"><span>Next.js</span><span>Design system</span><span>A/B tests</span></div></div>
+      <div class="viz"><canvas data-viz="flow"></canvas><span class="mono">funnel, 30-day cohort</span></div></article>
+  </div>
+</section>
+
+<section class="audit wrap" id="audit" aria-label="Quality">
+  <h2>Every launch<br>passes the audit</h2>
+  <div class="gauges">
+    <div class="gauge"><svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="50"/><circle class="fg" cx="60" cy="60" r="50" pathLength="100" stroke-dasharray="100 100" data-v="100"/><text x="60" y="71" text-anchor="middle">100</text></svg><span class="mono">Performance</span></div>
+    <div class="gauge"><svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="50"/><circle class="fg" cx="60" cy="60" r="50" pathLength="100" stroke-dasharray="100 100" data-v="100"/><text x="60" y="71" text-anchor="middle">100</text></svg><span class="mono">Accessibility</span></div>
+    <div class="gauge"><svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="50"/><circle class="fg" cx="60" cy="60" r="50" pathLength="100" stroke-dasharray="100 100" data-v="100"/><text x="60" y="71" text-anchor="middle">100</text></svg><span class="mono">Best practices</span></div>
+    <div class="gauge"><svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="50"/><circle class="fg" cx="60" cy="60" r="50" pathLength="100" stroke-dasharray="100 100" data-v="100"/><text x="60" y="71" text-anchor="middle">100</text></svg><span class="mono">SEO</span></div>
+  </div>
+  <p class="note">Lighthouse mobile scores from the last three launches. Budgets are set in CI, so a slow build fails before it reaches users.</p>
+</section>
+</main>
+
+<footer class="contact wrap" id="contact">
+  <h2>Have a product that<br>feels <mark>slow?</mark></h2>
+  <div class="cta">
+    <a class="btn" href="#contact" id="mag">Book a<br>30-min call</a>
+    <span class="mail">mara@lindqvist.dev</span>
+  </div>
+  <div class="foot mono"><span>Sample portfolio by Sethi Studio</span><span>GitHub · LinkedIn · Read.cv</span><span>© 2026</span></div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function fit(cv){const r=cv.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);cv.width=Math.max(2,Math.round(r.width*d));cv.height=Math.max(2,Math.round(r.height*d));return cv.getContext('2d')}
+
+/* icosphere wireframe */
+function icosphere(sub){const t=(1+Math.sqrt(5))/2;let v=[[-1,t,0],[1,t,0],[-1,-t,0],[1,-t,0],[0,-1,t],[0,1,t],[0,-1,-t],[0,1,-t],[t,0,-1],[t,0,1],[-t,0,-1],[-t,0,1]].map(n);
+  let f=[[0,11,5],[0,5,1],[0,1,7],[0,7,10],[0,10,11],[1,5,9],[5,11,4],[11,10,2],[10,7,6],[7,1,8],[3,9,4],[3,4,2],[3,2,6],[3,6,8],[3,8,9],[4,9,5],[2,4,11],[6,2,10],[8,6,7],[9,8,1]];
+  function n(p){const l=Math.hypot(...p);return p.map(c=>c/l)}
+  for(let s=0;s<sub;s++){const c={},nf=[];const mid=(a,b)=>{const k=a<b?a+'_'+b:b+'_'+a;if(c[k]!=null)return c[k];v.push(n(v[a].map((x,i)=>(x+v[b][i])/2)));return c[k]=v.length-1};
+    f.forEach(([a,b,cc])=>{const ab=mid(a,b),bc=mid(b,cc),ca=mid(cc,a);nf.push([a,ab,ca],[b,bc,ab],[cc,ca,bc],[ab,bc,ca])});f=nf}
+  const e=new Set();f.forEach(([a,b,c])=>[[a,b],[b,c],[c,a]].forEach(([x,y])=>e.add(x<y?x+','+y:y+','+x)));
+  return{v,e:[...e].map(s=>s.split(',').map(Number))}}
+const M=icosphere(3);
+const wire=document.getElementById('wire');let wg,rx=.4,ry=0,vx=0,vy=.004,drag=null;
+function drawWire(t){const W=wire.width,H=wire.height,g=wg;g.clearRect(0,0,W,H);
+  const R=Math.min(W,H)*.36,cx=W/2,cy=H/2;
+  const cX=Math.cos(rx),sX=Math.sin(rx),cY=Math.cos(ry),sY=Math.sin(ry);
+  const P=M.v.map(([x,y,z])=>{const n=1+.08*Math.sin(x*4+t*1.3)*Math.cos(y*3+t);x*=n;y*=n;z*=n;
+    let x1=x*cY+z*sY,z1=-x*sY+z*cY,y1=y*cX-z1*sX,z2=y*sX+z1*cX;const s=2.6/(2.6+z2);return[cx+x1*R*s,cy+y1*R*s,z2]});
+  g.lineWidth=Math.max(1,W/700);
+  M.e.forEach(([a,b])=>{const z=(P[a][2]+P[b][2])/2;g.strokeStyle=z<0?'rgba(18,19,20,.75)':'rgba(18,19,20,.14)';g.beginPath();g.moveTo(P[a][0],P[a][1]);g.lineTo(P[b][0],P[b][1]);g.stroke()});
+  g.fillStyle='#ff5b1f';P.forEach((p,i)=>{if(i%23===0&&p[2]<0){g.beginPath();g.arc(p[0],p[1],W/220,0,7);g.fill()}});
+  /* dimension line */
+  g.strokeStyle='rgba(18,19,20,.5)';g.setLineDash([4,4]);g.beginPath();g.moveTo(cx-R,H*.94);g.lineTo(cx+R,H*.94);g.stroke();g.setLineDash([]);
+  g.fillStyle='#121314';g.font=`${W/42}px "IBM Plex Mono", monospace`;g.textAlign='center';g.fillText('Ø 240 mm',cx,H*.92);
+}
+wire.addEventListener('pointerdown',e=>{drag=[e.clientX,e.clientY];wire.setPointerCapture(e.pointerId)});
+wire.addEventListener('pointermove',e=>{if(!drag)return;vy=(e.clientX-drag[0])*.0006;vx=(e.clientY-drag[1])*.0006;drag=[e.clientX,e.clientY];ry+=vy*8;rx+=vx*8});
+wire.addEventListener('pointerup',()=>drag=null);
+
+/* project visuals */
+function viz(cv){const g=fit(cv),W=cv.width,H=cv.height,k=cv.dataset.viz;g.clearRect(0,0,W,H);g.lineWidth=Math.max(1,W/600);
+  if(k==='bars'){const before=[410,380,450,520,470,430,500,480],after=[130,120,140,150,125,118,135,128];const bw=W/(before.length*3+1);
+    before.forEach((b,i)=>{const x=bw*(1+i*3),hb=b/560*H*.75,ha=after[i]/560*H*.75;g.fillStyle='rgba(18,19,20,.18)';g.fillRect(x,H*.88-hb,bw,hb);g.fillStyle='#121314';g.fillRect(x+bw,H*.88-ha,bw,ha)});
+    g.fillStyle='#ff5b1f';g.fillRect(0,H*.88-120/560*H*.75,W,2);g.fillStyle='#121314';g.font=`${W/40}px "IBM Plex Mono", monospace`;g.fillText('budget 120ms',W*.03,H*.88-120/560*H*.75-8);}
+  if(k==='contour'){for(let l=0;l<18;l++){g.strokeStyle=l%5===0?'rgba(18,19,20,.8)':'rgba(18,19,20,.3)';g.beginPath();
+      for(let a=0;a<=Math.PI*2+.05;a+=.05){const r=(l+1)*W*.028*(1+.18*Math.sin(a*3+l*.3)+.08*Math.cos(a*5));const x=W*.55+Math.cos(a)*r,y=H*.55+Math.sin(a)*r*.7;a===0?g.moveTo(x,y):g.lineTo(x,y)}g.stroke()}
+    g.fillStyle='#f1c232';g.globalAlpha=.55;g.fillRect(0,H*.78,W,H*.22);g.globalAlpha=1;}
+  if(k==='flow'){const steps=[100,82,71,64],w=W/steps.length;steps.forEach((s,i)=>{const h=s/100*H*.62;g.fillStyle=i===3?'#f1c232':'rgba(18,19,20,'+(.85-i*.15)+')';g.fillRect(i*w+W*.04,H*.88-h,w*.7,h);
+      g.fillStyle='#121314';g.font=`${W/34}px "IBM Plex Mono", monospace`;g.fillText(s+'%',i*w+W*.04,H*.88-h-10)})}
+}
+
+function drawAll(){wg=fit(wire);drawWire(0);document.querySelectorAll('canvas[data-viz]').forEach(viz)}
+(document.fonts?document.fonts.ready:Promise.resolve()).then(drawAll);
+addEventListener('resize',()=>{clearTimeout(window._r);window._r=setTimeout(()=>{drawAll();window.ScrollTrigger&&ScrollTrigger.refresh()},150)});
+
+if(!RM&&window.gsap){
+  let T=0;gsap.ticker.add((t,dt)=>{T+=dt/1000;if(!drag){ry+=vy;rx+=vx*.2;vy+=(.004-vy)*.02;vx*=.95}drawWire(T)});
+  gsap.registerPlugin(ScrollTrigger);
+  const lenis=new Lenis({lerp:.1});lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+  document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();lenis.scrollTo(a.getAttribute('href'),{offset:-70})}));
+
+  /* typing terminal */
+  const tp=document.getElementById('typed'),full=tp.textContent;tp.textContent='';let i=0;const iv=setInterval(()=>{tp.textContent=full.slice(0,++i);if(i>=full.length)clearInterval(iv)},45);
+  gsap.from('.hero h1',{y:50,duration:1.2,ease:'expo.out'});
+  gsap.from('.specs b',{y:30,duration:.9,stagger:.08,ease:'power3.out',scrollTrigger:{trigger:'.specs',start:'top 90%'}});
+
+  /* stacked sheets shrink as the next one lands */
+  const mm=gsap.matchMedia();
+  mm.add('(min-width: 861px)',()=>{const sh=gsap.utils.toArray('.sheet');sh.forEach((s,i)=>{if(i===sh.length-1)return;
+    gsap.to(s,{scale:.94-(sh.length-2-i)*.02,filter:'brightness(.92)',ease:'none',scrollTrigger:{trigger:sh[i+1],start:'top bottom',end:'top 30%',scrub:true}})})});
+
+  /* gauges fill */
+  document.querySelectorAll('.gauge .fg').forEach(c=>{gsap.fromTo(c,{strokeDasharray:'0 100'},{strokeDasharray:'100 100',duration:1.6,ease:'power2.out',scrollTrigger:{trigger:c,start:'top 90%'}})});
+
+  /* magnetic button */
+  const b=document.getElementById('mag');b.addEventListener('pointermove',e=>{const r=b.getBoundingClientRect();gsap.to(b,{x:(e.clientX-r.left-r.width/2)*.35,y:(e.clientY-r.top-r.height/2)*.35,duration:.4})});
+  b.addEventListener('pointerleave',()=>gsap.to(b,{x:0,y:0,duration:.6,ease:'elastic.out(1,.4)'}));
+}
+</script>
+
+</html>

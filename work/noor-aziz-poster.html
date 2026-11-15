@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Noor Aziz Studio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;600&family=Inter+Tight:wght@400;600&display=swap">
+<style>
+/* Layout: printed-poster system. A 12-col grid of hairlines, giant condensed type, halftone canvas plates, a pinned horizontal work reel. */
+:root{
+  --paper:#efe7d8; --ink:#141110; --red:#d8321f; --red-deep:#a8220f; --mute:#6f665c; --line:rgba(20,17,16,.18);
+  --display:"Anton","Impact","Haettenschweiler",sans-serif;
+  --serif:"Instrument Serif","Georgia",serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+  --body:"Inter Tight",system-ui,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:auto}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5;overflow-x:hidden}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.22;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E")}
+.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.mono{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+
+/* nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;justify-content:space-between;align-items:center;gap:16px;
+  padding-top:calc(14px + env(safe-area-inset-top,0px));padding-bottom:14px;mix-blend-mode:difference;color:#efe7d8}
+.nav a{text-decoration:none}
+.nav .links{display:flex;gap:22px}
+
+/* hero */
+.hero{position:relative;padding-block:96px 40px;border-bottom:1px solid var(--line)}
+.hero-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;align-items:end}
+.hero h1{grid-column:1/-1;grid-row:1;align-self:end;position:relative;z-index:2;mix-blend-mode:multiply;font-family:var(--display);font-weight:400;line-height:.9;font-size:clamp(64px,12.5vw,200px);letter-spacing:-.01em;margin:0;text-transform:uppercase}
+.hero h1 .line{display:block;overflow:hidden}
+.hero h1 .line span{display:inline-block}
+.hero h1 em{font-family:var(--serif);font-style:italic;text-transform:none;color:var(--red);font-size:.62em;letter-spacing:0;vertical-align:.18em;margin-left:.08em}
+.hero .plate{grid-column:8/13;grid-row:1;align-self:start;margin-top:8px;aspect-ratio:4/5;max-width:100%;position:relative;background:var(--ink)}
+.hero .plate canvas{width:100%;height:100%;display:block}
+.hero .plate .cap{position:absolute;left:10px;bottom:10px;color:var(--paper)}
+.hero .meta{grid-column:1/8;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:28px}
+.hero .meta p{margin:6px 0 0;font-size:14px;color:var(--mute);max-width:28ch}
+.stamp{position:absolute;right:max(16px,env(safe-area-inset-right,0px));top:120px;width:132px;height:132px;border-radius:50%;background:var(--red);color:var(--paper);
+  display:grid;place-items:center;z-index:3}
+.stamp svg{position:absolute;inset:0;animation:spin 18s linear infinite}
+.stamp b{font-family:var(--display);font-size:42px;font-weight:400}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* marquee */
+.marquee{background:var(--ink);color:var(--paper);overflow:hidden;padding-block:16px;white-space:nowrap}
+.marquee .track{display:inline-flex;gap:40px;font-family:var(--display);font-size:clamp(34px,6vw,72px);text-transform:uppercase;animation:mq 26s linear infinite}
+.marquee .track i{font-family:var(--serif);color:var(--red);font-weight:400}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* manifesto */
+.manifesto{padding-block:120px;display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+.manifesto .mono{grid-column:1/4}
+.manifesto p{grid-column:4/13;margin:0;font-family:var(--serif);font-style:italic;font-size:clamp(30px,4.6vw,66px);line-height:1.04;text-wrap:balance}
+.manifesto p .w{opacity:.16;transition:opacity .2s}
+.manifesto p .w.on{opacity:1}
+.manifesto p b{font-family:var(--display);font-style:normal;font-weight:400;text-transform:uppercase;color:var(--red)}
+
+/* reel */
+.reel{position:relative;background:var(--ink);color:var(--paper);overflow:hidden}
+.reel-head{display:flex;justify-content:space-between;align-items:end;gap:16px;padding-block:64px 24px}
+.reel-head h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(48px,9vw,140px);line-height:.85;margin:0}
+.reel-track{display:flex;gap:28px;padding-bottom:72px;width:max-content}
+.card{width:min(78vw,560px);flex:none}
+.card .art{aspect-ratio:4/5;position:relative;overflow:hidden;background:var(--red)}
+.card canvas{width:100%;height:100%;display:block;transition:transform .8s cubic-bezier(.2,.7,.1,1)}
+.card:hover canvas{transform:scale(1.04)}
+.card .row{display:flex;justify-content:space-between;gap:12px;margin-top:14px}
+.card h3{font-family:var(--display);font-weight:400;font-size:34px;text-transform:uppercase;margin:4px 0 0;line-height:1}
+.card p{margin:6px 0 0;color:#b9afa1;font-size:14px;max-width:44ch}
+
+/* services */
+.services{padding-block:110px}
+.services h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(44px,8vw,120px);line-height:.86;margin:0 0 40px}
+.svc{border-top:1px solid var(--ink);display:grid;grid-template-columns:120px minmax(0,1fr) minmax(0,1fr) 120px;gap:16px;padding-block:22px;align-items:baseline;position:relative;cursor:default}
+.svc:last-child{border-bottom:1px solid var(--ink)}
+.svc h3{font-family:var(--display);font-weight:400;font-size:clamp(30px,4.4vw,58px);text-transform:uppercase;margin:0;line-height:1;transition:transform .4s,color .4s}
+.svc:hover h3{transform:translateX(14px);color:var(--red)}
+.svc p{margin:0;color:var(--mute);font-size:15px}
+.svc .price{text-align:right}
+
+/* contact */
+.contact{background:var(--red);color:var(--paper);padding-block:110px 40px;position:relative;overflow:hidden}
+.contact h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(70px,17vw,260px);line-height:.8;margin:0}
+.contact h2 em{font-family:var(--serif);font-style:italic;text-transform:none;color:var(--ink)}
+.contact .mail{display:inline-block;margin-top:34px;font-family:var(--serif);font-style:italic;font-size:clamp(26px,4vw,52px);user-select:all;border-bottom:2px solid var(--paper)}
+.contact .foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;margin-top:90px}
+
+/* cursor */
+.cur{position:fixed;left:0;top:0;width:14px;height:14px;border-radius:50%;background:var(--red);pointer-events:none;z-index:60;transform:translate(-50%,-50%);mix-blend-mode:multiply;transition:width .25s,height .25s}
+.cur.big{width:84px;height:84px}
+@media (hover:none){.cur{display:none}}
+
+@media (max-width:820px){
+  .hero h1{grid-row:auto;mix-blend-mode:normal}
+  .hero .plate{grid-column:1/-1;grid-row:auto;aspect-ratio:16/11}
+  .hero .meta{grid-column:1/-1;grid-template-columns:1fr 1fr}
+  .stamp{display:none}
+  .manifesto .mono,.manifesto p{grid-column:1/-1}
+  .svc{grid-template-columns:56px minmax(0,1fr)}
+  .svc p,.svc .price{grid-column:2}
+  .svc .price{text-align:left}
+}
+@media (prefers-reduced-motion:reduce){.marquee .track,.stamp svg{animation:none}.manifesto p .w{opacity:1}}
+</style>
+
+<div class="cur" aria-hidden="true"></div>
+
+<nav class="nav wrap mono" aria-label="Main">
+  <a href="#top">Noor Aziz ®</a>
+  <div class="links"><a href="#work">Work</a><a href="#services">Services</a><a href="#contact">Contact</a></div>
+</nav>
+
+<header class="hero wrap" id="top">
+  <div class="stamp" aria-hidden="true">
+    <svg viewBox="0 0 132 132"><defs><path id="c" d="M66,66 m-50,0 a50,50 0 1,1 100,0 a50,50 0 1,1 -100,0"/></defs>
+      <text fill="#efe7d8" font-family="JetBrains Mono" font-size="9.5" letter-spacing="3"><textPath href="#c">AVAILABLE · DEC 2026 · LAHORE · WORLDWIDE ·</textPath></text></svg>
+    <b>N/A</b>
+  </div>
+  <div class="hero-grid">
+    <div class="plate"><canvas id="portrait" aria-label="Halftone portrait plate"></canvas><span class="cap mono">Plate 01 · 85 lpi</span></div>
+    <h1><span class="line"><span>Posters</span></span><span class="line"><span>that <em>shout,</em></span></span><span class="line"><span>brands that stay</span></span></h1>
+    <div class="meta">
+      <div><span class="mono">Practice</span><p>Identity, poster and type design for music, culture and food brands.</p></div>
+      <div><span class="mono">Based</span><p>Lahore, working with clients in London, Dubai and Toronto.</p></div>
+      <div><span class="mono">Since</span><p>2019 · 64 identities · 210 posters printed</p></div>
+    </div>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true"><div class="track">
+  <span>Identity</span><i>&amp;</i><span>Posters</span><i>&amp;</i><span>Type</span><i>&amp;</i><span>Packaging</span><i>&amp;</i><span>Motion</span><i>&amp;</i>
+  <span>Identity</span><i>&amp;</i><span>Posters</span><i>&amp;</i><span>Type</span><i>&amp;</i><span>Packaging</span><i>&amp;</i><span>Motion</span><i>&amp;</i>
+</div></div>
+
+<section class="manifesto wrap" aria-label="About">
+  <span class="mono">(About — 02)</span>
+  <p id="manifesto">I design things people stop for. Big type, loud colour and one clear idea per piece. Every project starts on paper, gets <b>printed</b> at least once, and only ships when it still works from across the street.</p>
+</section>
+
+<section class="reel" id="work" aria-label="Selected work">
+  <div class="reel-head wrap"><h2>Selected<br>work</h2><span class="mono">2023 — 2026 · drag or scroll</span></div>
+  <div class="reel-track wrap" id="track">
+    <article class="card"><div class="art"><canvas data-art="sun" aria-label="Poster artwork: sun and grid"></canvas></div>
+      <div class="row"><div><span class="mono">Festival identity</span><h3>Lahore Jazz Week</h3></div><span class="mono">2026</span></div>
+      <p>A sun that rises one ring per day across the posters, tickets and stage screens.</p></article>
+    <article class="card"><div class="art"><canvas data-art="type" aria-label="Poster artwork: stacked type"></canvas></div>
+      <div class="row"><div><span class="mono">Restaurant brand</span><h3>Bun Maska</h3></div><span class="mono">2025</span></div>
+      <p>Hand-cut condensed letters printed straight onto the paper bags.</p></article>
+    <article class="card"><div class="art"><canvas data-art="dots" aria-label="Poster artwork: halftone wave"></canvas></div>
+      <div class="row"><div><span class="mono">Album artwork</span><h3>Neon Monsoon</h3></div><span class="mono">2025</span></div>
+      <p>Twelve halftone covers, one for each track, printed in two inks.</p></article>
+    <article class="card"><div class="art"><canvas data-art="arch" aria-label="Poster artwork: arches"></canvas></div>
+      <div class="row"><div><span class="mono">Exhibition</span><h3>Walled City</h3></div><span class="mono">2024</span></div>
+      <p>Wayfinding and posters for a photo show about Lahore's old gates.</p></article>
+  </div>
+</section>
+
+<section class="services wrap" id="services" aria-label="Services">
+  <h2>What I<br>make for you</h2>
+  <div class="svc"><span class="mono">I.</span><h3>Identity</h3><p>Logo, type, colour and a guide your team can actually use.</p><span class="mono price">from $1,800</span></div>
+  <div class="svc"><span class="mono">II.</span><h3>Posters</h3><p>Single posters or full campaign series, print-ready.</p><span class="mono price">from $450</span></div>
+  <div class="svc"><span class="mono">III.</span><h3>Packaging</h3><p>Labels, bags and boxes that look good on a shelf and in a photo.</p><span class="mono price">from $900</span></div>
+  <div class="svc"><span class="mono">IV.</span><h3>Motion</h3><p>Animated logos and social loops built from the identity.</p><span class="mono price">from $600</span></div>
+</section>
+
+<footer class="contact wrap" id="contact">
+  <span class="mono">(Contact — 05)</span>
+  <h2>Let's make<br>it <em>loud.</em></h2>
+  <span class="mail">hello@nooraziz.studio</span>
+  <div class="foot mono"><span>Sample portfolio by Sethi Studio</span><span>Instagram · Behance · Are.na</span><span>© 2026</span></div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const C = {paper:'#efe7d8', ink:'#141110', red:'#d8321f'};
+
+function fit(cv){const r=cv.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);cv.width=Math.max(2,r.width*d);cv.height=Math.max(2,r.height*d);return cv.getContext('2d')}
+
+/* halftone portrait: a generated head silhouette rendered as a dot screen */
+function portrait(t){
+  const cv=document.getElementById('portrait'),g=fit(cv),W=cv.width,H=cv.height;
+  g.fillStyle=C.ink;g.fillRect(0,0,W,H);
+  const step=Math.max(7,W/46);
+  for(let y=step/2;y<H;y+=step){for(let x=step/2;x<W;x+=step){
+    const nx=x/W-.5,ny=y/H-.48;
+    const head=Math.exp(-((nx/.2)**2+((ny+.1)/.26)**2));
+    const shoulders=Math.exp(-((nx/.45)**2+((ny-.42)/.18)**2));
+    const light=.55+.45*Math.sin(nx*5+ (t||0)*.6);
+    let v=Math.max(head*light,shoulders*.75)+.08*Math.sin(x*.02+y*.03);
+    v=Math.min(1,Math.max(0,v));
+    const r=step*.5*Math.sqrt(v);
+    if(r>.4){g.fillStyle=ny<.05&&head>.3?C.paper:C.red;g.beginPath();g.arc(x,y,r,0,7);g.fill()}
+  }}
+}
+
+/* poster plates for the reel */
+function art(cv){
+  const g=fit(cv),W=cv.width,H=cv.height,k=cv.dataset.art;
+  g.fillStyle=k==='type'?C.paper:C.red;g.fillRect(0,0,W,H);
+  if(k==='sun'){
+    for(let i=12;i>0;i--){g.fillStyle=i%2?C.ink:C.paper;g.beginPath();g.arc(W/2,H*.62,i*W*.045,Math.PI,0);g.fill()}
+    g.strokeStyle=C.ink;g.lineWidth=W*.004;
+    for(let i=0;i<14;i++){const y=H*.62+i*i*H*.0035;g.beginPath();g.moveTo(0,y);g.lineTo(W,y);g.stroke()}
+    g.fillStyle=C.ink;g.font=`${W*.2}px Anton, Impact, sans-serif`;g.fillText('JAZZ',W*.06,H*.24);
+    g.font=`${W*.05}px "JetBrains Mono", monospace`;g.fillText('12—19 DEC · ALHAMRA',W*.06,H*.3);
+  }
+  if(k==='type'){
+    g.fillStyle=C.ink;const words=['BUN','MASKA','CHAI','&','SOUL'];
+    words.forEach((w,i)=>{g.font=`${W*(.34-i*.03)}px Anton, Impact, sans-serif`;g.fillStyle=i===3?C.red:C.ink;g.fillText(w,W*.05,H*(.24+i*.17))});
+  }
+  if(k==='dots'){
+    g.fillStyle=C.ink;g.fillRect(0,0,W,H);const s=W/34;
+    for(let y=s/2;y<H;y+=s)for(let x=s/2;x<W;x+=s){const v=.5+.5*Math.sin(x/W*9+Math.sin(y/H*5)*2.2)*Math.cos(y/H*4);
+      g.fillStyle=v>.62?C.paper:C.red;g.beginPath();g.arc(x,y,s*.5*Math.sqrt(v),0,7);g.fill()}
+    g.fillStyle=C.paper;g.font=`${W*.1}px Anton, Impact, sans-serif`;g.fillText('NEON MONSOON',W*.05,H*.94);
+  }
+  if(k==='arch'){
+    g.fillStyle=C.paper;g.fillRect(0,0,W,H);
+    for(let i=0;i<4;i++){const x=W*(.08+i*.22),w=W*.18,h=H*(.5+i*.08);g.fillStyle=i%2?C.ink:C.red;
+      g.beginPath();g.moveTo(x,H);g.lineTo(x,H-h+w/2);g.arc(x+w/2,H-h+w/2,w/2,Math.PI,0);g.lineTo(x+w,H);g.fill()}
+    g.fillStyle=C.ink;g.font=`${W*.14}px Anton, Impact, sans-serif`;g.fillText('13 GATES',W*.06,H*.17);
+  }
+}
+
+function drawAll(){portrait(0);document.querySelectorAll('canvas[data-art]').forEach(art)}
+(document.fonts?document.fonts.ready:Promise.resolve()).then(drawAll);
+addEventListener('resize',()=>{clearTimeout(window._r);window._r=setTimeout(()=>{drawAll();ScrollTrigger&&ScrollTrigger.refresh()},150)});
+
+/* manifesto words light up as you read */
+const m=document.getElementById('manifesto');
+m.innerHTML=m.innerHTML.replace(/(<b>.*?<\/b>|[^\s<]+)/g,'<span class="w">$1</span>');
+
+if(window.gsap&&!RM){
+  gsap.registerPlugin(ScrollTrigger);
+  const lenis=new Lenis({lerp:.09});
+  lenis.on('scroll',ScrollTrigger.update);
+  gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+  document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();lenis.scrollTo(a.getAttribute('href'),{offset:-40})}));
+
+  gsap.from('.hero h1 .line > span',{yPercent:105,duration:1.2,ease:'expo.out',stagger:.09,delay:.1});
+  gsap.from('.hero .plate',{clipPath:'inset(100% 0 0 0)',duration:1.4,ease:'expo.inOut'});
+  gsap.to('.hero h1',{yPercent:-12,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+
+  const words=[...m.querySelectorAll('.w')];
+  ScrollTrigger.create({trigger:m,start:'top 75%',end:'bottom 45%',scrub:true,onUpdate:s=>{const n=Math.round(s.progress*words.length);words.forEach((w,i)=>w.classList.toggle('on',i<n))}});
+
+  const track=document.getElementById('track');
+  const mm=gsap.matchMedia();
+  mm.add('(min-width: 821px)',()=>{
+    gsap.to(track,{x:()=>-(track.scrollWidth-innerWidth),ease:'none',
+      scrollTrigger:{trigger:'.reel',start:'top top',end:()=>'+='+(track.scrollWidth-innerWidth),pin:true,scrub:1,invalidateOnRefresh:true}});
+  });
+  mm.add('(max-width: 820px)',()=>{track.style.width='auto';track.style.flexDirection='column'});
+
+  gsap.utils.toArray('.svc').forEach(s=>gsap.from(s,{x:-40,duration:.9,ease:'power3.out',scrollTrigger:{trigger:s,start:'top 90%'}}));
+  gsap.from('.contact h2',{yPercent:30,ease:'none',scrollTrigger:{trigger:'.contact',start:'top bottom',end:'top 30%',scrub:true}});
+  let t0=0;gsap.ticker.add(t=>{if(t-t0>.08){t0=t;portrait(t)}});
+}else{document.querySelectorAll('.manifesto .w').forEach(w=>w.classList.add('on'))}
+
+/* cursor */
+const cur=document.querySelector('.cur');
+addEventListener('pointermove',e=>{cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px'});
+document.querySelectorAll('a,.card,.svc').forEach(el=>{el.addEventListener('pointerenter',()=>cur.classList.add('big'));el.addEventListener('pointerleave',()=>cur.classList.remove('big'))});
+</script>
+
+</html>

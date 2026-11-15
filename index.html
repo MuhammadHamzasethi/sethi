@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sethi Studio · Websites, apps and video</title>
+<meta name="description" content="Sethi Studio builds websites, web apps, SaaS products and video ads for growing businesses in the US, UK and worldwide. Fixed prices, fast delivery.">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{--k:#0A0A0A;--w:#FFFFFF;--y:#FFD400;--k2:#161616;--line:rgba(255,255,255,.14);--mute:rgba(255,255,255,.62);--mono:"JetBrains Mono",ui-monospace,monospace;--sans:"Archivo",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0}
+html{-webkit-text-size-adjust:100%;overflow-x:clip}
+body{background:var(--k);color:var(--w);font-family:var(--sans);font-size:17px;line-height:1.55;overflow-x:clip}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{width:100%;max-width:1360px;margin:0 auto;padding-inline:max(20px,env(safe-area-inset-left,0px))}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.d{font-family:var(--sans);font-stretch:125%;font-weight:900;letter-spacing:-.02em;line-height:.92;text-transform:uppercase}
+:focus-visible{outline:3px solid var(--y);outline-offset:3px}
+.btn{display:inline-flex;align-items:center;gap:12px;padding:16px 24px;border-radius:999px;font-weight:700;font-size:16px;transition:transform .25s,background .25s,color .25s}
+.btn.y-b{background:var(--y);color:var(--k)}
+.btn.y-b:hover{transform:translateY(-2px);background:var(--w)}
+.btn.o{border:1.5px solid var(--w)}
+.btn.o:hover{background:var(--w);color:var(--k)}
+.arr{display:inline-block;transition:transform .25s}
+a:hover .arr{transform:translateX(4px) rotate(-45deg)}
+
+.nav{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent;padding-top:env(safe-area-inset-top,0px)}
+.nav.s{background:rgba(10,10,10,.86);backdrop-filter:blur(10px);border-color:var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:76px;gap:20px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;letter-spacing:-.02em}
+.logo i{width:30px;height:30px;background:var(--y);display:grid;place-items:center;color:var(--k);font-style:normal;font-weight:900;font-size:22px;border-radius:6px}
+.links{display:flex;gap:30px;font-weight:500}
+.links a{position:relative}
+.links a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;background:var(--y);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.links a:hover::after{transform:scaleX(1)}
+.nav .btn{padding:11px 18px;font-size:15px}
+
+.hero{min-height:100svh;padding-top:140px;padding-bottom:40px;display:flex;flex-direction:column;justify-content:space-between;position:relative}
+.hero .top{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:var(--mute)}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--y);margin-right:8px;animation:p 2s infinite}
+@keyframes p{0%{box-shadow:0 0 0 0 rgba(255,212,0,.6)}70%{box-shadow:0 0 0 10px rgba(255,212,0,0)}100%{box-shadow:0 0 0 0 rgba(255,212,0,0)}}
+.hero h1{font-size:clamp(44px,8.4vw,136px);margin:40px 0 0}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.04em}
+.hero h1 .ln>span{display:inline-block}
+.hero h1 mark{background:var(--y);color:var(--k);padding:0 .12em;display:inline-block}
+.hero .bot{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:40px;align-items:end;margin-top:48px}
+.hero .bot p{font-size:clamp(18px,1.6vw,22px);color:var(--mute);max-width:560px}
+.hero .bot p b{color:var(--w);font-weight:600}
+.cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end}
+.star{position:absolute;right:max(20px,4vw);top:210px;width:clamp(90px,11vw,160px);aspect-ratio:1;color:var(--y)}
+.star svg{width:100%;height:100%;animation:spin 14s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.mq{background:var(--y);color:var(--k);overflow:hidden;padding:20px 0;transform:rotate(-1.4deg) scale(1.02);margin:30px 0}
+.mq .tr{display:flex;width:max-content;animation:mq 30s linear infinite}
+.mq span{font-size:clamp(28px,3.6vw,52px);padding-right:40px;white-space:nowrap}
+.mq span::after{content:"✱";padding-left:40px}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+section{padding-block:clamp(80px,11vw,150px)}
+.sh{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:40px;align-items:end;margin-bottom:56px}
+.sh h2{font-size:clamp(42px,5.4vw,88px)}
+.sh p{color:var(--mute);font-size:18px;max-width:520px;justify-self:end}
+.num{color:var(--y);display:block;margin-bottom:18px}
+
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stats div{padding:34px 22px;border-right:1px solid var(--line)}
+.stats div:last-child{border-right:0}
+.stats b{display:block;font-size:clamp(40px,5vw,72px);font-stretch:125%;font-weight:900;line-height:1;color:var(--y);font-variant-numeric:tabular-nums;margin-bottom:8px}
+.stats span{color:var(--mute);font-size:15px}
+
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:28px}
+.card{grid-column:span 6;display:block}
+.card.big{grid-column:span 12}
+.card .img{position:relative;overflow:hidden;border-radius:14px;aspect-ratio:16/10;background:var(--k2)}
+.card.big .img{aspect-ratio:21/9}
+.card .img img{width:100%;height:calc(100% + 40px);margin-top:-20px;object-fit:cover;object-position:top;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.card:hover .img img{transform:scale(1.04)}
+.card .tag{position:absolute;left:16px;top:16px;background:var(--y);color:var(--k);padding:7px 11px;border-radius:999px}
+.card .go{position:absolute;right:16px;bottom:16px;width:64px;height:64px;border-radius:50%;background:var(--y);color:var(--k);display:grid;place-items:center;font-size:26px;font-weight:700;transform:scale(0);transition:transform .35s cubic-bezier(.3,1.4,.5,1)}
+.card:hover .go{transform:scale(1)}
+.card .meta{display:flex;justify-content:space-between;gap:20px;padding-top:18px}
+.card h3{font-size:clamp(24px,2.4vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.card p{color:var(--mute);font-size:16px;margin-top:6px;max-width:520px}
+.card .k{color:var(--mute);text-align:right;white-space:nowrap}
+.card .img video{width:100%;height:100%;object-fit:cover;background:#000}
+.card .play{position:absolute;inset:0;display:grid;place-items:center}
+.card .play i{width:92px;height:92px;border-radius:50%;background:var(--y);display:grid;place-items:center;transition:transform .3s}
+.card:hover .play i{transform:scale(1.1)}
+.card .play i::before{content:"";border-left:26px solid var(--k);border-top:16px solid transparent;border-bottom:16px solid transparent;margin-left:6px}
+
+.light{background:var(--w);color:var(--k)}
+.light .sh p{color:#555}
+.light .num{color:var(--k)}
+.svc{border-top:2px solid var(--k)}
+.row{display:grid;grid-template-columns:70px minmax(0,1.3fr) minmax(0,1.5fr) 150px;gap:24px;padding:30px 12px;border-bottom:1px solid rgba(10,10,10,.18);align-items:start;position:relative}
+.row::before{content:"";position:absolute;inset:0;background:var(--y);transform:scaleY(0);transform-origin:bottom;transition:transform .35s cubic-bezier(.2,.7,.2,1);z-index:0}
+.row:hover::before{transform:scaleY(1)}
+.row>*{position:relative;z-index:1}
+.row h3{font-size:clamp(24px,2.5vw,36px);font-stretch:112%;font-weight:800;line-height:1.05;letter-spacing:-.02em}
+.row .tx{color:#3a3a3a}
+.row ul{margin:12px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px}
+.row li{font-size:13px;border:1px solid rgba(10,10,10,.3);border-radius:999px;padding:4px 10px}
+.row .pr{text-align:right}
+.row .pr small{display:block;font-size:12px;color:#555;font-family:var(--mono);text-transform:uppercase;letter-spacing:.06em}
+.row .pr b{display:block;font-size:28px;font-stretch:115%;font-weight:900}
+.row .pr span{font-size:13px;color:#555}
+
+.yel{background:var(--y);color:var(--k)}
+.yel .num{color:var(--k)}
+.yel .sh p{color:#2a2a2a}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:2px solid var(--k)}
+.step{padding:28px 24px 10px;border-right:1px solid rgba(10,10,10,.25)}
+.step:first-child{padding-left:0}
+.step:last-child{border-right:0}
+.step .bigno{font-size:clamp(70px,8vw,130px);font-stretch:125%;font-weight:900;line-height:.9;display:block;margin-bottom:22px;-webkit-text-stroke:2px var(--k);color:transparent;transition:color .3s}
+.step:hover .bigno{color:var(--k)}
+.step h3{font-size:24px;font-weight:800;margin:8px 0}
+.step p{color:#2a2a2a}
+
+.team{display:grid;grid-template-columns:minmax(0,1.2fr) repeat(3,minmax(0,1fr));gap:20px}
+.mem{border:1px solid var(--line);border-radius:14px;padding:26px;display:flex;flex-direction:column;gap:10px;min-height:250px;transition:border-color .3s}
+.mem:hover{border-color:var(--y)}
+.mem .av{width:56px;height:56px;border-radius:50%;background:var(--k2);border:1px solid var(--line);display:grid;place-items:center;font-weight:800;color:var(--y)}
+.mem.lead{background:var(--y);color:var(--k);border-color:var(--y)}
+.mem.lead .av{background:var(--k);color:var(--y);border:0}
+.mem.lead p{color:#2a2a2a}
+.mem h3{font-size:22px;font-weight:800;margin-top:auto}
+.mem p{color:var(--mute);font-size:15px}
+
+.faqw{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:60px}
+.faq details{border-bottom:1px solid var(--line);padding:24px 0}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;font-size:clamp(20px,2vw,26px);font-weight:700}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--y);font-size:32px;line-height:1;transition:transform .3s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{color:var(--mute);margin-top:12px;max-width:760px}
+
+.contact{background:var(--y);color:var(--k);padding-block:clamp(80px,10vw,140px) 40px}
+.contact .num{color:var(--k)}
+.contact h2{font-size:clamp(64px,14vw,240px)}
+.contact .lead{font-size:clamp(18px,1.8vw,24px);max-width:620px;margin:28px 0 48px}
+.ways{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.way{background:var(--k);color:var(--w);border-radius:16px;padding:30px;display:flex;flex-direction:column;gap:8px;transition:transform .3s}
+.way:hover{transform:translateY(-4px)}
+.way .v{font-size:clamp(22px,2.6vw,36px);font-weight:800;font-stretch:110%;word-break:break-word}
+.way .acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.way button,.way a.b2{font:inherit;font-size:15px;font-weight:600;border-radius:999px;padding:10px 16px;border:1px solid rgba(255,255,255,.3);background:none;color:var(--w);cursor:pointer}
+.way a.b2.p{background:var(--y);color:var(--k);border-color:var(--y)}
+.foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:90px;padding-top:24px;border-top:2px solid var(--k)}
+
+.rv{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+.cursor{opacity:0;position:fixed;left:0;top:0;width:14px;height:14px;border-radius:50%;background:var(--y);pointer-events:none;z-index:99;mix-blend-mode:difference;transition:width .25s,height .25s}
+.cursor.big{width:64px;height:64px}
+
+@media (max-width:980px){
+  .links{display:none}
+  .hero .bot,.sh,.faqw{grid-template-columns:1fr}
+  .sh p{justify-self:start}
+  .cta{justify-content:flex-start}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stats div:nth-child(2){border-right:0}
+  .stats div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .card,.card.big{grid-column:1/-1}
+  .card.big .img{aspect-ratio:16/10}
+  .row{grid-template-columns:44px minmax(0,1fr);gap:10px 16px}
+  .row>.tx,.row>.pr{grid-column:2}
+  .row .pr{text-align:left}
+  .steps{grid-template-columns:1fr 1fr}
+  .step{border-right:0;padding-left:0;border-bottom:1px solid rgba(10,10,10,.25)}
+  .team{grid-template-columns:1fr 1fr}
+  .mem.lead{grid-column:1/-1}
+  .ways{grid-template-columns:1fr}
+  .star{top:100px;width:70px}
+  .cursor{display:none}
+}
+@media (max-width:560px){.hero h1{font-size:9.6vw}.steps,.team{grid-template-columns:1fr}.nav .btn .t{display:none}.hero{padding-top:120px}}
+@media (hover:none){.cursor{display:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+.lb{position:fixed;inset:0;z-index:200;background:rgba(10,10,10,.92);display:none;place-items:center;padding:24px}
+.lb.on{display:grid}
+.lb video{width:min(1200px,100%);max-height:84vh;border-radius:14px;background:#000}
+.lb button{position:absolute;top:18px;right:18px;width:52px;height:52px;border-radius:50%;border:0;background:#FFD400;color:#0A0A0A;font-size:26px;font-weight:800;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="cursor" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="logo" aria-label="Sethi Studio home"><i>✱</i>Sethi Studio</a>
+    <nav class="links" aria-label="Main"><a href="#work">Work</a><a href="#services">Services</a><a href="#process">Process</a><a href="#team">Team</a><a href="#faq">FAQ</a></nav>
+    <a class="btn y-b" href="#contact"><span class="t">Start a project</span><span class="arr">→</span></a>
+  </div>
+</header>
+
+<main>
+<section class="hero wrap" id="top" aria-label="Intro">
+  <div class="top mono"><span><i class="dot"></i>Taking new projects · US hours</span><span>Web · Product · Video studio</span></div>
+  <div class="star" aria-hidden="true"><svg viewBox="0 0 100 100"><g fill="currentColor"><rect x="45" y="0" width="10" height="100" rx="2"/><rect x="45" y="0" width="10" height="100" rx="2" transform="rotate(45 50 50)"/><rect x="45" y="0" width="10" height="100" rx="2" transform="rotate(90 50 50)"/><rect x="45" y="0" width="10" height="100" rx="2" transform="rotate(135 50 50)"/></g></svg></div>
+  <h1 class="d"><span class="ln"><span>We build</span></span><span class="ln"><span><mark>websites</mark></span></span><span class="ln"><span>that win</span></span><span class="ln"><span>customers.</span></span></h1>
+  <div class="bot">
+    <p>Sethi Studio designs and builds <b>websites, web apps, SaaS products and video ads</b> for growing businesses in the US, UK and worldwide. Fixed prices, clear timelines, and you talk to the people doing the work.</p>
+    <div class="cta"><a class="btn y-b" href="#contact">Get a free quote <span class="arr">→</span></a><a class="btn o" href="#work">See our work</a></div>
+  </div>
+</section>
+
+<div class="mq" aria-hidden="true"><div class="tr">
+  <span class="d">Websites</span><span class="d">Web apps</span><span class="d">SaaS</span><span class="d">Online shops</span><span class="d">Video ads</span><span class="d">Portfolios</span><span class="d">Chat assistants</span>
+  <span class="d">Websites</span><span class="d">Web apps</span><span class="d">SaaS</span><span class="d">Online shops</span><span class="d">Video ads</span><span class="d">Portfolios</span><span class="d">Chat assistants</span>
+</div></div>
+
+<div class="wrap" style="margin-top:60px">
+  <div class="stats rv">
+    <div><b data-n="7">7</b><span>days to launch a typical business website</span></div>
+    <div><b data-n="24" data-s="h">24h</b><span>maximum reply time, usually much faster</span></div>
+    <div><b>50/50</b><span>half to start, half when you approve</span></div>
+    <div><b data-n="100" data-s="%">100%</b><span>ownership of your code, content and domain</span></div>
+  </div>
+</div>
+
+<section id="work" aria-label="Selected work">
+  <div class="wrap">
+    <div class="sh"><div><span class="num mono">01 / Selected work</span><h2 class="d">Work we're<br>proud of.</h2></div><p>A product we built and run ourselves, SaaS launch videos, plus concept projects that show the standard you can expect on yours.</p></div>
+    <div class="grid">
+      <a class="card big rv" href="https://donehub.me" target="_blank" rel="noopener">
+        <div class="img"><img src="work/donehub.jpg" alt="DONE. study platform homepage" loading="lazy"><span class="tag mono">Live product</span><span class="go">↗</span></div>
+        <div class="meta"><div><h3>DONE.</h3><p>Our own SaaS. A study platform connected to university systems, with deadlines, grades and attendance sent to WhatsApp.</p></div><span class="k mono">SaaS · 2026</span></div>
+      </a>
+      <a class="card big rv" href="videos/asaanrabta.mp4" data-video="videos/asaanrabta.mp4" data-title="AsaanRabta product video">
+        <div class="img"><video class="fv" src="videos/asaanrabta.mp4" poster="videos/asaanrabta.jpg" muted loop playsinline preload="none" aria-label="AsaanRabta product video"></video><span class="tag mono">SaaS video</span><span class="play"><i></i></span></div>
+        <div class="meta"><div><h3>AsaanRabta</h3><p>Launch video for a WhatsApp sales SaaS. Smooth UI motion that shows AI replies, lead tracking and broadcasts in 30 seconds.</p></div><span class="k mono">Product video · 0:30</span></div>
+      </a>
+      <a class="card rv" href="videos/aconectus.mp4" data-video="videos/aconectus.mp4" data-title="Aconectus product video">
+        <div class="img"><video class="fv" src="videos/aconectus.mp4" poster="videos/aconectus.jpg" muted loop playsinline preload="none" aria-label="Aconectus product video"></video><span class="tag mono">SaaS video</span><span class="play"><i></i></span></div>
+        <div class="meta"><div><h3>Aconectus</h3><p>Explainer for a marketplace that matches influencers, small brands and factories.</p></div><span class="k mono">Product video · 0:40</span></div>
+      </a>
+      <a class="card rv" href="videos/aconectus-pt.mp4" data-video="videos/aconectus-pt.mp4" data-title="Aconectus product video, Portuguese">
+        <div class="img"><video class="fv" src="videos/aconectus-pt.mp4" poster="videos/aconectus-pt.jpg" muted loop playsinline preload="none" aria-label="Aconectus product video in Portuguese"></video><span class="tag mono">SaaS video · PT</span><span class="play"><i></i></span></div>
+        <div class="meta"><div><h3>Aconectus, Portuguese</h3><p>The same launch video localised for the Brazilian market.</p></div><span class="k mono">Product video · 0:40</span></div>
+      </a>
+      <a class="card rv" href="work/noor-aziz-poster.html" target="_blank" rel="noopener">
+        <div class="img"><img src="work/noor-aziz-poster.jpg" alt="Noor Aziz Studio portfolio" loading="lazy"><span class="tag mono">Portfolio</span><span class="go">↗</span></div>
+        <div class="meta"><div><h3>Noor Aziz Studio</h3><p>Bold portfolio for a poster designer, with a scroll-pinned poster reel.</p></div><span class="k mono">Concept</span></div>
+      </a>
+      <a class="card rv" href="work/idris-vale-film.html" target="_blank" rel="noopener">
+        <div class="img"><img src="work/idris-vale-film.jpg" alt="Idris Vale Films portfolio" loading="lazy"><span class="tag mono">Portfolio</span><span class="go">↗</span></div>
+        <div class="meta"><div><h3>Idris Vale Films</h3><p>Cinematic site for a film director, with a film-strip scroll.</p></div><span class="k mono">Concept</span></div>
+      </a>
+      <a class="card rv" href="work/mara-lindqvist-engineer.html" target="_blank" rel="noopener">
+        <div class="img"><img src="work/mara-lindqvist-engineer.jpg" alt="Mara Lindqvist developer portfolio" loading="lazy"><span class="tag mono">Portfolio</span><span class="go">↗</span></div>
+        <div class="meta"><div><h3>Mara Lindqvist</h3><p>Developer portfolio with a 3D model you can drag and stacked project cards.</p></div><span class="k mono">Concept</span></div>
+      </a>
+      <a class="card rv" href="https://d2ol7oe51mr4n9.cloudfront.net/user_3KTOwpZB8lEv7dmUfaAQMHu52OI/3b55dca1-4240-4aaf-ad8f-28be13ab87cb.mp4" data-video="https://d2ol7oe51mr4n9.cloudfront.net/user_3KTOwpZB8lEv7dmUfaAQMHu52OI/3b55dca1-4240-4aaf-ad8f-28be13ab87cb.mp4" data-title="From Nothing to Us">
+        <div class="img"><video class="fv" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3KTOwpZB8lEv7dmUfaAQMHu52OI/3b55dca1-4240-4aaf-ad8f-28be13ab87cb.mp4#t=34.6" muted playsinline preload="metadata" aria-label="Short film From Nothing to Us"></video><span class="tag mono">Video</span><span class="play"><i></i></span></div>
+        <div class="meta"><div><h3>From Nothing to Us</h3><p>A 73-second cinematic film on the story of life, with narration and full sound design.</p></div><span class="k mono">Short film</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="light" id="services" aria-label="Services">
+  <div class="wrap">
+    <div class="sh"><div><span class="num mono">02 / Services</span><h2 class="d">What we do.<br>What it costs.</h2></div><p>Starting prices in US dollars. After a free 15-minute call you get one fixed price in writing.</p></div>
+    <div class="svc">
+      <div class="row rv"><span class="mono">01</span><h3>Business websites</h3><div class="tx">A fast, modern website that turns visitors into calls, bookings and sales.<ul><li>3–6 pages</li><li>Booking &amp; forms</li><li>SEO basics</li><li>2 rounds of changes</li></ul></div><div class="pr"><small>from</small><b>$350</b><span>5–7 days</span></div></div>
+      <div class="row rv"><span class="mono">02</span><h3>Redesigns &amp; repairs</h3><div class="tx">We fix broken, slow or outdated sites, or rebuild them while you keep your content and domain.<ul><li>Free diagnosis</li><li>Speed &amp; mobile fixes</li><li>WordPress, Wix, Squarespace</li></ul></div><div class="pr"><small>from</small><b>$50</b><span>1–10 days</span></div></div>
+      <div class="row rv"><span class="mono">03</span><h3>Web apps &amp; SaaS</h3><div class="tx">From idea to a working product with real users. We built and run our own SaaS.<ul><li>Accounts &amp; dashboards</li><li>Stripe payments</li><li>Weekly progress links</li></ul></div><div class="pr"><small>from</small><b>$1,500</b><span>2–10 weeks</span></div></div>
+      <div class="row rv"><span class="mono">04</span><h3>Online shops</h3><div class="tx">Shopify or WooCommerce stores that are easy to manage and easy to buy from.<ul><li>Products &amp; payments</li><li>Shipping &amp; tax</li><li>Fast checkout</li></ul></div><div class="pr"><small>from</small><b>$600</b><span>1–3 weeks</span></div></div>
+      <div class="row rv"><span class="mono">05</span><h3>Portfolio websites</h3><div class="tx">A personal site with smooth scroll animation that makes people remember you.<ul><li>Custom design</li><li>Animations</li><li>Mobile-ready</li></ul></div><div class="pr"><small>from</small><b>$250</b><span>4–7 days</span></div></div>
+      <div class="row rv"><span class="mono">06</span><h3>Chat assistants &amp; automation</h3><div class="tx">A website assistant that answers customers day and night, plus automations that remove repetitive work.<ul><li>Trained on your info</li><li>WhatsApp &amp; email</li><li>CRM connected</li></ul></div><div class="pr"><small>from</small><b>$200</b><span>2–7 days</span></div></div>
+      <div class="row rv"><span class="mono">07</span><h3>Video ads &amp; films</h3><div class="tx">Short vertical ads for TikTok, Reels and Shorts, and cinematic brand films with full sound design.<ul><li>Script &amp; hook</li><li>Captions &amp; music</li><li>Monthly packages</li></ul></div><div class="pr"><small>from</small><b>$60</b><span>per video</span></div></div>
+      <div class="row rv"><span class="mono">08</span><h3>Care plan</h3><div class="tx">We look after your website every month so it never breaks quietly.<ul><li>Updates &amp; backups</li><li>Small edits</li><li>Speed &amp; security</li></ul></div><div class="pr"><small>from</small><b>$60</b><span>per month</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="yel" id="process" aria-label="Process">
+  <div class="wrap">
+    <div class="sh"><div><span class="num mono">03 / Process</span><h2 class="d">Live in<br>7 days.</h2></div><p>A typical business website. Apps and SaaS follow the same steps over a few more weeks, with a working link every week.</p></div>
+    <div class="steps">
+      <div class="step rv"><span class="bigno">01</span><span class="mono">Day 1</span><h3>Call &amp; quote</h3><p>15 minutes on Zoom or WhatsApp. Fixed price and timeline the same day.</p></div>
+      <div class="step rv"><span class="bigno">02</span><span class="mono">Day 2–3</span><h3>Design</h3><p>You approve the homepage design before anything is built.</p></div>
+      <div class="step rv"><span class="bigno">03</span><span class="mono">Day 4–6</span><h3>Build</h3><p>Every page built and tested on phones, tablets and desktop.</p></div>
+      <div class="step rv"><span class="bigno">04</span><span class="mono">Day 7</span><h3>Launch</h3><p>Live on your domain, with two weeks of free fixes after launch.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="team" aria-label="Team">
+  <div class="wrap">
+    <div class="sh"><div><span class="num mono">04 / Team</span><h2 class="d">Small team.<br>One contact.</h2></div><p>You always talk to the founder directly. A small team of specialists handles design, development and video.</p></div>
+    <div class="team">
+      <div class="mem lead rv"><span class="av">MH</span><span class="mono">Founder · Lead developer</span><h3>Muhammad Hamza Sethi</h3><p>Plans every project, writes the code and is your main contact from first call to launch.</p></div>
+      <div class="mem rv"><span class="av">D</span><span class="mono">Design</span><h3>Design team</h3><p>Brand, layout and user experience.</p></div>
+      <div class="mem rv"><span class="av">E</span><span class="mono">Engineering</span><h3>Development team</h3><p>Front-end, back-end, payments and integrations.</p></div>
+      <div class="mem rv"><span class="av">V</span><span class="mono">Video</span><h3>Video team</h3><p>Scripts, editing and short-form ads.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" aria-label="Questions" style="padding-top:0">
+  <div class="wrap faqw">
+    <div><span class="num mono">05 / FAQ</span><h2 class="d" style="font-size:clamp(44px,5.6vw,88px)">Questions<br>clients ask.</h2></div>
+    <div class="faq">
+      <details open><summary>Where are you based?</summary><p>Our team is based in Pakistan and works US hours, 9am to 6pm Eastern, so we're available during your working day. We work with clients in the US, UK, Europe, Australia and Asia.</p></details>
+      <details><summary>How does payment work?</summary><p>Half before we start and half when you approve the finished work. Larger projects are split into milestones. You can also hire us through Upwork or Fiverr.</p></details>
+      <details><summary>What if I don't like the design?</summary><p>You approve the design before we build anything, and two rounds of changes are included in every price.</p></details>
+      <details><summary>Can you fix a site someone else built?</summary><p>Yes. Send us the link and what's wrong, and we'll tell you the cause and the price for free.</p></details>
+      <details><summary>Who owns the website?</summary><p>You do. The code, the content and the domain are yours from day one.</p></details>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="contact" id="contact">
+  <div class="wrap">
+    <span class="num mono">06 / Start a project</span>
+    <h2 class="d">Let's<br>talk.</h2>
+    <p class="lead">Send us your website link or a few lines about your idea. We'll reply with a plan and a fixed price, usually within a few hours.</p>
+    <div class="ways">
+      <div class="way"><span class="mono" style="color:var(--y)">WhatsApp</span><span class="v">+92 328 5279235</span><div class="acts"><a class="b2 p" href="https://wa.me/923285279235" target="_blank" rel="noopener">Open WhatsApp →</a><button type="button" data-copy="+923285279235">Copy number</button></div></div>
+      <div class="way"><span class="mono" style="color:var(--y)">Email</span><span class="v">sethi25237@gmail.com</span><div class="acts"><a class="b2 p" href="mailto:sethi25237@gmail.com">Send email →</a><button type="button" data-copy="sethi25237@gmail.com">Copy email</button></div></div>
+    </div>
+    <div class="foot mono"><span>© 2026 Sethi Studio</span><span>Mon–Fri · 9am–6pm US Eastern</span><span>Websites · Apps · SaaS · Video</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var nav=document.getElementById('nav');
+  function onS(){nav.classList.toggle('s',scrollY>30)}onS();addEventListener('scroll',onS,{passive:true});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.rv').forEach(function(el,i){el.style.transitionDelay=((i%4)*0.08)+'s';io.observe(el)});
+  if(!RM){var co=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;co.unobserve(e.target);
+    var el=e.target,n=+el.dataset.n,s=el.dataset.s||'',t0=performance.now();
+    (function f(t){var p=Math.min(1,(t-t0)/1400),v=Math.round(n*(1-Math.pow(1-p,3)));el.textContent=v+s;if(p<1)requestAnimationFrame(f)})(t0)})},{threshold:.5});
+    document.querySelectorAll('[data-n]').forEach(function(el){el.textContent='0'+(el.dataset.s||'');co.observe(el)});
+    document.querySelectorAll('.hero h1 .ln>span').forEach(function(s,i){s.animate([{transform:'translateY(110%)'},{transform:'none'}],{duration:1100,delay:150+i*120,easing:'cubic-bezier(.2,.8,.2,1)',fill:'both'})})}
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var t=document.querySelector(a.getAttribute('href'));if(!t)return;e.preventDefault();t.scrollIntoView({behavior:RM?'auto':'smooth'})})});
+  document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){var v=b.dataset.copy,o=b.textContent;
+    function ok(){b.textContent='Copied ✓';setTimeout(function(){b.textContent=o},1600)}
+    if(navigator.clipboard)navigator.clipboard.writeText(v).then(ok,function(){})})});
+  var c=document.querySelector('.cursor');
+  if(c&&matchMedia('(hover:hover) and (min-width:981px)').matches&&!RM){var x=-99,y=-99,cx=-99,cy=-99;addEventListener('pointermove',function(e){x=e.clientX;y=e.clientY;c.style.opacity=1});
+    (function l(){cx+=(x-cx)*.2;cy+=(y-cy)*.2;c.style.transform='translate('+(cx-c.offsetWidth/2)+'px,'+(cy-c.offsetHeight/2)+'px)';requestAnimationFrame(l)})();
+    document.querySelectorAll('a,button,summary').forEach(function(el){el.addEventListener('pointerenter',function(){c.classList.add('big')});el.addEventListener('pointerleave',function(){c.classList.remove('big')})})}
+  document.querySelectorAll('.fv').forEach(function(v){var cd=v.closest('.card');cd.addEventListener('pointerenter',function(){v.play().catch(function(){})});cd.addEventListener('pointerleave',function(){v.pause()})});
+  if(!RM){var imgs=[].slice.call(document.querySelectorAll('.card .img img'));function px(){imgs.forEach(function(im){var r=im.parentNode.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;var p=(r.top+r.height/2-innerHeight/2)/innerHeight;im.style.translate='0 '+(p*-18)+'px'})}addEventListener('scroll',px,{passive:true});px()}
+})();
+</script>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Video player"><button type="button" aria-label="Close video">×</button><video controls playsinline></video></div>
+<script>
+(function(){var lb=document.getElementById('lb'),v=lb.querySelector('video');
+function close(){v.pause();v.removeAttribute('src');v.load();lb.classList.remove('on');document.body.style.overflow=''}
+document.querySelectorAll('[data-video]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();v.src=a.getAttribute('data-video');v.setAttribute('aria-label',a.getAttribute('data-title')||'Video');lb.classList.add('on');document.body.style.overflow='hidden';v.play().catch(function(){})})});
+lb.querySelector('button').addEventListener('click',close);lb.addEventListener('click',function(e){if(e.target===lb)close()});
+addEventListener('keydown',function(e){if(e.key==='Escape'&&lb.classList.contains('on'))close()});})();
+</script>
+</body>
+</html>
